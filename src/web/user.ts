@@ -1,5 +1,5 @@
-import { userListMock } from "../mocks/user";
-import { isNonEmptyArray, ReadonlyNonEmptyArray } from "../utils/nonEmptyArray";
+import { userListMock } from '../mocks/userList';
+import { isNonEmptyArray, ReadonlyNonEmptyArray } from '../utils/nonEmptyArray';
 
 export interface UserCodec {
   age: number;
@@ -13,6 +13,7 @@ export interface User {
   fullName: string;
 }
 
+// fake API call
 const getUser = (): Promise<ReadonlyNonEmptyArray<User>> => {
   return new Promise((res, rej) => {
     const mockResponse = userListMock();
@@ -25,7 +26,7 @@ const getUser = (): Promise<ReadonlyNonEmptyArray<User>> => {
     if (isNonEmptyArray(userList)) {
       return res(userList);
     }
-    return rej("error");
+    return rej('error');
   });
 };
 
